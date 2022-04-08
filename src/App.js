@@ -34,11 +34,16 @@ class App extends Component {
       let cardOne, cardTwo
       if (this.state.card.cards[0].value ==  "KING" || this.state.card.cards[0].value ==  "QUEEN" || this.state.card.cards[0].value ==  "JACK") {
         cardOne = 10
-      } else if (this.state.card.cards[0].value !=  "KING" || this.state.card.cards[0].value !=  "QUEEN" || this.state.card.cards[0].value !=  "JACK") {
+      } else if (this.state.card.cards[0].value ==  "ACE") {
+        cardOne = 11
+      }
+      else if (this.state.card.cards[0].value !=  "KING" || this.state.card.cards[0].value !=  "QUEEN" || this.state.card.cards[0].value !=  "JACK") {
         cardOne = this.state.card.cards[0].value
       } 
       if (this.state.card.cards[1].value ==  "KING" || this.state.card.cards[1].value ==  "QUEEN" || this.state.card.cards[1].value ==  "JACK") {
         cardTwo = 10
+      } else if (this.state.card.cards[1].value ==  "ACE") {
+        cardTwo = 11
       } else if (this.state.card.cards[1].value !=  "KING" || this.state.card.cards[1].value !=  "QUEEN" || this.state.card.cards[1].value !=  "JACK") {
         cardTwo = this.state.card.cards[1].value
       } 
