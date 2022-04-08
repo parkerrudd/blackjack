@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Grape+Nuts&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0; 
+  padding: 0; 
+  background-color: #238540;
+}
+
+.App {
+  height: 100vh;
+  font-family: 'Grape Nuts', cursive;
+}
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#header-btn {
+  background-color: brown;
+  padding: 1em;
+  border-radius: 50px;
+  font-weight: bold;
+}
+
+.dealerCards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1em;
+}
+
+.firstCards {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  /* right: 35%; */
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+img {
+  max-width: 15vw;
+}
+
+.player-btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  /* margin-top: 15em; */
+}
+
+.btns {
+  background-color: brown;
+  padding: 1em;
+  border-radius: 50px;
+  font-weight: bold;
+}
