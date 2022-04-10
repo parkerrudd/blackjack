@@ -19,6 +19,10 @@
   align-items: center;
 }
 
+.counts {
+  font-weight: bold;
+}
+
 #header-btn {
   background-color: brown;
   padding: 1em;

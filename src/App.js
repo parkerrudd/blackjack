@@ -33,14 +33,24 @@ class App extends Component {
     const {card, loading, dealCards, hit, stay, dealerCount, playerCount, dealerCardThree, dealerCardFour} = this.state;
 
     if (this.state.playerCount > 21) {
-      setTimeout(() => alert('You Busted'), 500)
+      setTimeout(() => {
+        alert('You Busted')
+        window.location.reload()
+    }, 500)
+
     }
     if (this.state.dealerCount >= 16 && this.state.playerCount > this.state.dealerCount) {
-      setTimeout(() => alert('You Won!'), 500)
+      setTimeout(() => {
+        alert('You Won!')
+        window.location.reload()
+      }, 500)
     }
 
     if (this.state.dealerCount > 21) {
-      setTimeout(() => alert('Dealer Busted, You Win!'), 500)
+      setTimeout(() => {
+        alert('Dealer Busted, You Win!')
+        window.location.reload(); 
+      }, 500)
     }
 
     const deal = () => {
@@ -76,17 +86,26 @@ class App extends Component {
         dealerCount: parseInt(cardThree)
       })
 
-      if (parseInt(cardOne) + parseInt(cardTwo) == 21) {
-        setTimeout(() => alert('Blackjack!'), 500)
+      if (parseInt(cardOne) + parseInt(cardTwo) === 21 && cardThree + parseInt(this.state.card.cards[3].value) != 21) {
+        setTimeout(() => {
+          alert('Blackjack!')
+          window.location.reload(); 
+        }, 500)
       }
 
-      if (parseInt(cardThree) + parseInt(this.state.card.cards[3].value) === 21) {
+      if (parseInt(cardThree) + parseInt(this.state.card.cards[3].value) === 21 && parseInt(cardOne) + parseInt(cardTwo) != 21) {
         setTimeout(() => {
           alert('Dealer has blackjack. You lose')
           this.setState({
-            stay: true
+            stay: true,
+            dealerCount: this.state.dealerCount + parseInt(this.state.card.cards[3].value)
           })
+          window.location.reload(); 
         }, 500)
+      }
+
+      if (parseInt(cardOne) + parseInt(cardTwo) === 21 && cardThree + parseInt(this.state.card.cards[3].value) === 21) {
+        setTimeout(() => alert('Tie!, both players have blackjack'), 500)
       }
       
   }; 
@@ -203,9 +222,17 @@ class App extends Component {
         }, 2000)
       }     
     }
-    if (this.state.dealerCount > this.state.playerCount) {
+    if (this.state.stay && this.state.dealerCount >= 16 && this.state.dealerCount === this.state.playerCount) {
+      setTimeout(() => {
+        alert('Tie')
+        window.location.reload(); 
+      }, 500)
+    }
+
+    if (this.state.dealerCount > this.state.playerCount && this.state.stay) {
       setTimeout(() => {
         alert('Dealer wins')
+        window.location.reload(); 
       }, 500)
     }
 
