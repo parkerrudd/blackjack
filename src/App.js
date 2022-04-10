@@ -31,7 +31,7 @@ class App extends Component {
     const {card, loading, dealCards, hit, stay, dealerCount, playerCount} = this.state;
 
     const deal = () => {
-      let cardOne, cardTwo
+      let cardOne, cardTwo, cardThree
       if (this.state.card.cards[0].value ==  "KING" || this.state.card.cards[0].value ==  "QUEEN" || this.state.card.cards[0].value ==  "JACK") {
         cardOne = 10
       } else if (this.state.card.cards[0].value ==  "ACE") {
@@ -51,6 +51,17 @@ class App extends Component {
         dealCards: true, 
         playerCount: parseInt(cardOne) + parseInt(cardTwo)
       })
+
+      if (this.state.card.cards[2].value ==  "KING" || this.state.card.cards[2].value ==  "QUEEN" || this.state.card.cards[2].value ==  "JACK") {
+        cardThree = 10
+      } else if (this.state.card.cards[2].value !=  "KING" || this.state.card.cards[2].value !=  "QUEEN" || this.state.card.cards[2].value !=  "JACK") {
+        cardThree = this.state.card.cards[2].value
+      } else if (this.state.card.cards[2].value ==  "ACE") {
+        cardThree = 11
+      }  
+      this.setState({
+        dealerCount: parseInt(cardThree)
+      })
       
   }; 
 
@@ -58,17 +69,69 @@ class App extends Component {
       this.setState({
         hit: this.state.hit + 1, 
       })
+
+      let cardFive
+      if (this.state.card.cards[4].value ==  "KING" || this.state.card.cards[4].value ==  "QUEEN" || this.state.card.cards[4].value ==  "JACK") {
+        cardFive = 10
+      } else if (this.state.card.cards[4].value !=  "KING" || this.state.card.cards[4].value !=  "QUEEN" || this.state.card.cards[4].value !=  "JACK") {
+        cardFive = this.state.card.cards[4].value
+      } 
+      if (this.state.hit === 0) {
+        this.setState({
+          playerCount: this.state.playerCount + parseInt(cardFive)
+        })
+      }
+
+      let cardSix
+      if (this.state.card.cards[5].value ==  "KING" || this.state.card.cards[5].value ==  "QUEEN" || this.state.card.cards[5].value ==  "JACK") {
+        cardSix = 10
+      } else if (this.state.card.cards[5].value !=  "KING" || this.state.card.cards[5].value !=  "QUEEN" || this.state.card.cards[5].value !=  "JACK") {
+        cardSix = this.state.card.cards[5].value
+      } 
+      if (this.state.hit === 1) {
+        this.setState({
+          playerCount: this.state.playerCount + parseInt(cardSix)
+        })
+      }
+
+      let cardSeven
+      if (this.state.card.cards[6].value ==  "KING" || this.state.card.cards[6].value ==  "QUEEN" || this.state.card.cards[6].value ==  "JACK") {
+        cardSeven = 10
+      } else if (this.state.card.cards[6].value !=  "KING" || this.state.card.cards[6].value !=  "QUEEN" || this.state.card.cards[6].value !=  "JACK") {
+        cardSeven = this.state.card.cards[6].value
+      } 
+      if (this.state.hit === 2) {
+        this.setState({
+          playerCount: this.state.playerCount + parseInt(cardSeven)
+        })
+      }
+
+      if (this.state.playerCount > 21) {
+        alert('You Busted')
+      }
     }
 
     const stayHere = () => {
       this.setState({
         stay: true
       })
+
+      let cardFour
+      if (this.state.card.cards[3].value ==  "KING" || this.state.card.cards[3].value ==  "QUEEN" || this.state.card.cards[3].value ==  "JACK") {
+        cardFour = 10
+      } else if (this.state.card.cards[3].value !=  "KING" || this.state.card.cards[3].value !=  "QUEEN" || this.state.card.cards[3].value !=  "JACK") {
+        cardFour = this.state.card.cards[3].value
+      } else if (this.state.card.cards[3].value == "ACE" && this.state.dealerCount <= 10) {
+        cardFour = 11
+      } else if (this.state.card.cards[3].value == "ACE" && this.state.dealerCount >= 10) {
+        cardFour = 1
+      }
+
+      this.setState({
+        dealerCount: this.state.dealerCount + parseInt(cardFour)
+      })
     }
 
-    // const compareCount = () => {
-      
-    // }
     return (
 
     <div className='App'>

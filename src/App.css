@@ -44,7 +44,7 @@
 }
 
 img {
-  max-width: 14vw;
+  max-width: 13vw;
 }
 
 .player-btns {
@@ -60,4 +60,8 @@ img {
   padding: 1em;
   border-radius: 50px;
   font-weight: bold;
+}
+
+button {
+  cursor: pointer;
 }
