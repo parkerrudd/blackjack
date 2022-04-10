@@ -21,17 +21,21 @@ class App extends Component {
       hit: 0,
       stay: false,
       playerCount: 0, 
-      dealerCount: 0
+      dealerCount: 0, 
+      dealerCardThree: false
     })
 
   }
 
 
   render() {
-    const {card, loading, dealCards, hit, stay, dealerCount, playerCount} = this.state;
+    const {card, loading, dealCards, hit, stay, dealerCount, playerCount, dealerCardThree} = this.state;
 
     if (this.state.playerCount > 21) {
       setTimeout(() => alert('You Busted'), 500)
+    }
+    if (this.state.dealerCount >= 16 && this.state.playerCount > this.state.dealerCount) {
+      setTimeout(() => alert('You Won!'), 500)
     }
 
     const deal = () => {
@@ -147,6 +151,14 @@ class App extends Component {
         dealerCount: this.state.dealerCount + parseInt(cardFour)
       }) 
 
+      if (this.state.dealerCount + parseInt(cardFour) < 16) {
+        setTimeout(() => {
+          this.setState({
+            dealerCardThree: true
+          })
+        }, 500)
+      }
+
     }
 
     return (
@@ -163,7 +175,7 @@ class App extends Component {
 
         <div>
           {dealCards ? <UserDraw cards={this.state.card} anotherCard={this.state.hit} doneBetting={this.state.stay} playerCount={this.state.playerCount}/> : ''}
-          {dealCards ? <DealerDraw cards={this.state.card} reveal={this.state.stay} dealerCount={this.state.dealerCount}/> : ''}
+          {dealCards ? <DealerDraw cards={this.state.card} reveal={this.state.stay} dealerCount={this.state.dealerCount} dealerCardThree={dealerCardThree}/> : ''}
         </div>
             {
             dealCards ?  

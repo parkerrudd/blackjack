@@ -14,6 +14,11 @@ function DealerDraw(props) {
                 }
                 
             </div>
+            <div id="dealer-card-three" >
+                {
+                    props.dealerCardThree ? <img src={props.cards.cards[7].image} alt="" /> : ''
+                }
+            </div>
         </div>
     )
 }
