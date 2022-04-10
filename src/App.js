@@ -22,20 +22,25 @@ class App extends Component {
       stay: false,
       playerCount: 0, 
       dealerCount: 0, 
-      dealerCardThree: false
+      dealerCardThree: false, 
+      dealerCardFour: false
     })
 
   }
 
 
   render() {
-    const {card, loading, dealCards, hit, stay, dealerCount, playerCount, dealerCardThree} = this.state;
+    const {card, loading, dealCards, hit, stay, dealerCount, playerCount, dealerCardThree, dealerCardFour} = this.state;
 
     if (this.state.playerCount > 21) {
       setTimeout(() => alert('You Busted'), 500)
     }
     if (this.state.dealerCount >= 16 && this.state.playerCount > this.state.dealerCount) {
       setTimeout(() => alert('You Won!'), 500)
+    }
+
+    if (this.state.dealerCount > 21) {
+      setTimeout(() => alert('Dealer Busted, You Win!'), 500)
     }
 
     const deal = () => {
@@ -73,6 +78,15 @@ class App extends Component {
 
       if (parseInt(cardOne) + parseInt(cardTwo) == 21) {
         setTimeout(() => alert('Blackjack!'), 500)
+      }
+
+      if (parseInt(cardThree) + parseInt(this.state.card.cards[3].value) === 21) {
+        setTimeout(() => {
+          alert('Dealer has blackjack. You lose')
+          this.setState({
+            stay: true
+          })
+        }, 500)
       }
       
   }; 
@@ -152,14 +166,53 @@ class App extends Component {
       }) 
 
       if (this.state.dealerCount + parseInt(cardFour) < 16) {
+        let cardEight
+        if (this.state.card.cards[7].value ==  "KING" || this.state.card.cards[7].value ==  "QUEEN" || this.state.card.cards[7].value ==  "JACK") {
+          cardEight = 10
+        } else if (this.state.card.cards[7].value == "ACE" && this.state.dealerCount <= 10) {
+          cardEight = 11
+        } else if (this.state.card.cards[7].value == "ACE" && this.state.dealerCount >= 10) {
+          cardEight = 1
+        } else if (this.state.card.cards[7].value !=  "KING" || this.state.card.cards[7].value !=  "QUEEN" || this.state.card.cards[7].value !=this.state.card.cards[7].value != "ACE") {
+          cardEight = this.state.card.cards[7].value
+        } 
         setTimeout(() => {
           this.setState({
-            dealerCardThree: true
+            dealerCardThree: true, 
+            dealerCount: this.state.dealerCount + parseInt(cardEight)
           })
-        }, 500)
+        }, 1000)
       }
 
+      if (this.state.dealerCount + parseInt(cardFour) + parseInt(this.state.card.cards[7].value) < 16) {
+        let cardNine
+        if (this.state.card.cards[8].value ==  "KING" || this.state.card.cards[8].value ==  "QUEEN" || this.state.card.cards[8].value ==  "JACK") {
+          cardNine = 10
+        } else if (this.state.card.cards[8].value == "ACE" && this.state.dealerCount <= 10) {
+          cardNine = 11
+        } else if (this.state.card.cards[9].value == "ACE" && this.state.dealerCount >= 10) {
+          cardNine = 1
+        } else if (this.state.card.cards[9].value !=  "KING" || this.state.card.cards[9].value !=  "QUEEN" || this.state.card.cards[9].value !=this.state.card.cards[9].value != "ACE") {
+          cardNine = this.state.card.cards[7].value
+        } 
+        setTimeout(() => {
+          this.setState({
+            dealerCardFour: true, 
+            dealerCount: this.state.dealerCount + parseInt(cardNine)
+          })
+        }, 2000)
+      }     
     }
+    if (this.state.dealerCount > this.state.playerCount) {
+      setTimeout(() => {
+        alert('Dealer wins')
+      }, 500)
+    }
+
+    // const dealerWins = confirm('Dealer wins'); 
+    // if (dealerWins == true) {
+    //   window.location.reload(); 
+    // }
 
     return (
 
@@ -175,7 +228,7 @@ class App extends Component {
 
         <div>
           {dealCards ? <UserDraw cards={this.state.card} anotherCard={this.state.hit} doneBetting={this.state.stay} playerCount={this.state.playerCount}/> : ''}
-          {dealCards ? <DealerDraw cards={this.state.card} reveal={this.state.stay} dealerCount={this.state.dealerCount} dealerCardThree={dealerCardThree}/> : ''}
+          {dealCards ? <DealerDraw cards={this.state.card} reveal={this.state.stay} dealerCount={this.state.dealerCount} dealerCardThree={dealerCardThree} dealerCardFour={dealerCardFour}/> : ''}
         </div>
             {
             dealCards ?  
