@@ -48,8 +48,14 @@
 }
 
 img {
-  max-width: 13vw;
+  width: 10em;
   animation: fadeIn .5s;
+}
+
+@media screen and (max-width: 900px) {
+  img {
+    max-width: 20vw;
+  }
 }
 
 @keyframes fadeIn {
@@ -66,7 +72,11 @@ img {
   justify-content: center;
   align-items: center;
   gap: 1em;
-  /* margin-top: 15em; */
+  position: absolute;
+  top: 63%;
+  left: 48%;
+  margin-top: -50px;
+  margin-left: -50px;
 }
 
 .btns {
@@ -78,4 +88,10 @@ img {
 
 button {
   cursor: pointer;
+}
+
+@media screen and (max-width: 550px) {
+  .player-btns {
+    left: 45%;
+  }
 }

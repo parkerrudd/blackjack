@@ -15,12 +15,16 @@ function UserDraw(props) {
                 <img src={props.cards.cards[4].image} alt="" />
             </div>: ''}
             {props.anotherCard > 1 ? 
-            <div id="cardThree">
+            <div id="cardFour">
                 <img src={props.cards.cards[5].image} alt="" />
             </div>: ''}
             {props.anotherCard > 2 ? 
-            <div id="cardThree">
+            <div id="cardFive">
                 <img src={props.cards.cards[6].image} alt="" />
+            </div>: ''}
+            {props.anotherCard > 3 ? 
+            <div id="cardSix">
+                <img src={props.cards.cards[9].image} alt="" />
             </div>: ''}
         </div>
         

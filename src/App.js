@@ -59,10 +59,12 @@ class App extends Component {
         cardOne = 10
       } else if (this.state.card.cards[0].value ==  "ACE") {
         cardOne = 11
-      }
-      else if (this.state.card.cards[0].value !=  "KING" || this.state.card.cards[0].value !=  "QUEEN" || this.state.card.cards[0].value !=  "JACK") {
+      } else if (this.state.card.cards[0].value == "ACE" && this.state.playerCount >= 10) {
+        cardOne = 1
+      }  else if (this.state.card.cards[0].value !=  "KING" || this.state.card.cards[0].value !=  "QUEEN" || this.state.card.cards[0].value !=  "JACK") {
         cardOne = this.state.card.cards[0].value
       } 
+      
       if (this.state.card.cards[1].value ==  "KING" || this.state.card.cards[1].value ==  "QUEEN" || this.state.card.cards[1].value ==  "JACK") {
         cardTwo = 10
       } else if (this.state.card.cards[1].value ==  "ACE") {
@@ -162,7 +164,23 @@ class App extends Component {
           playerCount: this.state.playerCount + parseInt(cardSeven)
         })
       }
+      let cardTen
+      if (this.state.card.cards[9].value ==  "KING" || this.state.card.cards[9].value ==  "QUEEN" || this.state.card.cards[9].value ==  "JACK") {
+        cardTen = 10
+      } else if (this.state.card.cards[9].value == "ACE" && this.state.playerCount <= 10) {
+        cardTen = 11
+      } else if (this.state.card.cards[9].value == "ACE" && this.state.playerCount >= 10) {
+        cardTen = 1
+      } else if (this.state.card.cards[9].value !=  "KING" || this.state.card.cards[9].value !=  "QUEEN" || this.state.card.cards[9].value !=  "JACK") {
+        cardTen = this.state.card.cards[9].value
+      } 
+      if (this.state.hit === 3) {
+        this.setState({
+          playerCount: this.state.playerCount + parseInt(cardTen)
+        })
+      }
     }
+    
 
     const stayHere = () => {
       this.setState({
@@ -188,9 +206,9 @@ class App extends Component {
         let cardEight
         if (this.state.card.cards[7].value ==  "KING" || this.state.card.cards[7].value ==  "QUEEN" || this.state.card.cards[7].value ==  "JACK") {
           cardEight = 10
-        } else if (this.state.card.cards[7].value == "ACE" && this.state.dealerCount <= 10) {
+        } else if (this.state.card.cards[7].value == "ACE" && this.state.dealerCount + cardFour <= 10) {
           cardEight = 11
-        } else if (this.state.card.cards[7].value == "ACE" && this.state.dealerCount >= 10) {
+        } else if (this.state.card.cards[7].value == "ACE" && this.state.dealerCount + cardFour >= 10) {
           cardEight = 1
         } else if (this.state.card.cards[7].value !=  "KING" || this.state.card.cards[7].value !=  "QUEEN" || this.state.card.cards[7].value !=this.state.card.cards[7].value != "ACE") {
           cardEight = this.state.card.cards[7].value
@@ -209,10 +227,10 @@ class App extends Component {
           cardNine = 10
         } else if (this.state.card.cards[8].value == "ACE" && this.state.dealerCount <= 10) {
           cardNine = 11
-        } else if (this.state.card.cards[9].value == "ACE" && this.state.dealerCount >= 10) {
+        } else if (this.state.card.cards[8].value == "ACE" && this.state.dealerCount >= 10) {
           cardNine = 1
-        } else if (this.state.card.cards[9].value !=  "KING" || this.state.card.cards[9].value !=  "QUEEN" || this.state.card.cards[9].value !=this.state.card.cards[9].value != "ACE") {
-          cardNine = this.state.card.cards[7].value
+        } else if (this.state.card.cards[8].value !=  "KING" || this.state.card.cards[8].value !=  "QUEEN" || this.state.card.cards[8].value !=this.state.card.cards[8].value != "ACE") {
+          cardNine = this.state.card.cards[8].value
         } 
         setTimeout(() => {
           this.setState({
@@ -229,7 +247,7 @@ class App extends Component {
       }, 500)
     }
 
-    if (this.state.dealerCount > this.state.playerCount && this.state.stay) {
+    if (this.state.dealerCount > this.state.playerCount && this.state.stay && this.state.dealerCount <= 21) {
       setTimeout(() => {
         alert('Dealer wins')
         window.location.reload(); 
