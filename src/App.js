@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import UserDraw from './userDraw';
 import DealerDraw from './dealerDraw';
@@ -30,7 +30,7 @@ class App extends Component {
 
 
   render() {
-    const {card, loading, dealCards, hit, stay, dealerCount, playerCount, dealerCardThree, dealerCardFour} = this.state;
+    const {dealCards,dealerCardThree, dealerCardFour} = this.state;
 
     if (this.state.playerCount > 21) {
       setTimeout(() => {
@@ -67,8 +67,10 @@ class App extends Component {
       
       if (this.state.card.cards[1].value ===  "KING" || this.state.card.cards[1].value ===  "QUEEN" || this.state.card.cards[1].value ===  "JACK") {
         cardTwo = 10
-      } else if (this.state.card.cards[1].value ===  "ACE") {
+      } else if (this.state.card.cards[1].value ===  "ACE" && this.state.card.cards[0].value <= 10) {
         cardTwo = 11
+      } else if (this.state.card.cards[1].value ===  "ACE" && this.state.card.cards[0].value >= 10) {
+        cardTwo = 1
       } else if (this.state.card.cards[1].value !==  "KING" || this.state.card.cards[1].value !==  "QUEEN" || this.state.card.cards[1].value !==  "JACK") {
         cardTwo = this.state.card.cards[1].value
       } 
