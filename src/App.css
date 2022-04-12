@@ -89,6 +89,7 @@ img {
 
 button {
   cursor: pointer;
+  color: black;
 }
 
 @media screen and (max-width: 550px) {
