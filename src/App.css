@@ -21,6 +21,7 @@
 
 .counts {
   font-weight: bold;
+  font-size: 1.3em;
 }
 
 #header-btn {
@@ -54,7 +55,7 @@ img {
 
 @media screen and (max-width: 900px) {
   img {
-    max-width: 20vw;
+    max-width: 23vw;
   }
 }
 
@@ -73,7 +74,7 @@ img {
   align-items: center;
   gap: 1em;
   position: absolute;
-  top: 63%;
+  top: 65%;
   left: 48%;
   margin-top: -50px;
   margin-left: -50px;

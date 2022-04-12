@@ -55,21 +55,21 @@ class App extends Component {
 
     const deal = () => {
       let cardOne, cardTwo, cardThree
-      if (this.state.card.cards[0].value ==  "KING" || this.state.card.cards[0].value ==  "QUEEN" || this.state.card.cards[0].value ==  "JACK") {
+      if (this.state.card.cards[0].value ===  "KING" || this.state.card.cards[0].value ===  "QUEEN" || this.state.card.cards[0].value ===  "JACK") {
         cardOne = 10
-      } else if (this.state.card.cards[0].value ==  "ACE") {
+      } else if (this.state.card.cards[0].value ===  "ACE") {
         cardOne = 11
-      } else if (this.state.card.cards[0].value == "ACE" && this.state.playerCount >= 10) {
+      } else if (this.state.card.cards[0].value === "ACE" && this.state.playerCount >= 10) {
         cardOne = 1
-      }  else if (this.state.card.cards[0].value !=  "KING" || this.state.card.cards[0].value !=  "QUEEN" || this.state.card.cards[0].value !=  "JACK") {
+      }  else if (this.state.card.cards[0].value !==  "KING" || this.state.card.cards[0].value !==  "QUEEN" || this.state.card.cards[0].value !==  "JACK") {
         cardOne = this.state.card.cards[0].value
       } 
       
-      if (this.state.card.cards[1].value ==  "KING" || this.state.card.cards[1].value ==  "QUEEN" || this.state.card.cards[1].value ==  "JACK") {
+      if (this.state.card.cards[1].value ===  "KING" || this.state.card.cards[1].value ===  "QUEEN" || this.state.card.cards[1].value ===  "JACK") {
         cardTwo = 10
-      } else if (this.state.card.cards[1].value ==  "ACE") {
+      } else if (this.state.card.cards[1].value ===  "ACE") {
         cardTwo = 11
-      } else if (this.state.card.cards[1].value !=  "KING" || this.state.card.cards[1].value !=  "QUEEN" || this.state.card.cards[1].value !=  "JACK") {
+      } else if (this.state.card.cards[1].value !==  "KING" || this.state.card.cards[1].value !==  "QUEEN" || this.state.card.cards[1].value !==  "JACK") {
         cardTwo = this.state.card.cards[1].value
       } 
       this.setState({
@@ -77,25 +77,25 @@ class App extends Component {
         playerCount: parseInt(cardOne) + parseInt(cardTwo)
       })
 
-      if (this.state.card.cards[2].value ==  "KING" || this.state.card.cards[2].value ==  "QUEEN" || this.state.card.cards[2].value ==  "JACK") {
+      if (this.state.card.cards[2].value ===  "KING" || this.state.card.cards[2].value ===  "QUEEN" || this.state.card.cards[2].value ===  "JACK") {
         cardThree = 10
-      } else if (this.state.card.cards[2].value ==  "ACE") {
+      } else if (this.state.card.cards[2].value ===  "ACE") {
         cardThree = 11
-      } else if (this.state.card.cards[2].value !=  "KING" || this.state.card.cards[2].value !=  "QUEEN" || this.state.card.cards[2].value !=  "JACK" || this.state.card.cards[2].value != "ACE") {
+      } else if (this.state.card.cards[2].value !==  "KING" || this.state.card.cards[2].value !==  "QUEEN" || this.state.card.cards[2].value !==  "JACK" || this.state.card.cards[2].value !== "ACE") {
         cardThree = this.state.card.cards[2].value
       } 
       this.setState({
         dealerCount: parseInt(cardThree)
       })
 
-      if (parseInt(cardOne) + parseInt(cardTwo) === 21 && cardThree + parseInt(this.state.card.cards[3].value) != 21) {
+      if (parseInt(cardOne) + parseInt(cardTwo) === 21 && cardThree + parseInt(this.state.card.cards[3].value) !== 21) {
         setTimeout(() => {
           alert('Blackjack!')
           window.location.reload(); 
         }, 500)
       }
 
-      if (parseInt(cardThree) + parseInt(this.state.card.cards[3].value) === 21 && parseInt(cardOne) + parseInt(cardTwo) != 21) {
+      if (parseInt(cardThree) + parseInt(this.state.card.cards[3].value) === 21 && parseInt(cardOne) + parseInt(cardTwo) !== 21) {
         setTimeout(() => {
           alert('Dealer has blackjack. You lose')
           this.setState({
@@ -118,13 +118,13 @@ class App extends Component {
       })
 
       let cardFive
-      if (this.state.card.cards[4].value ==  "KING" || this.state.card.cards[4].value ==  "QUEEN" || this.state.card.cards[4].value ==  "JACK") {
+      if (this.state.card.cards[4].value ===  "KING" || this.state.card.cards[4].value ===  "QUEEN" || this.state.card.cards[4].value ===  "JACK") {
         cardFive = 10
-      } else if (this.state.card.cards[4].value == "ACE" && this.state.playerCount <= 10) {
+      } else if (this.state.card.cards[4].value === "ACE" && this.state.playerCount <= 10) {
         cardFive = 11
-      } else if (this.state.card.cards[4].value == "ACE" && this.state.playerCount >= 10) {
+      } else if (this.state.card.cards[4].value === "ACE" && this.state.playerCount >= 10) {
         cardFive = 1
-      } else if (this.state.card.cards[4].value !=  "KING" || this.state.card.cards[4].value !=  "QUEEN" || this.state.card.cards[4].value !=  "JACK") {
+      } else if (this.state.card.cards[4].value !==  "KING" || this.state.card.cards[4].value !==  "QUEEN" || this.state.card.cards[4].value !==  "JACK") {
         cardFive = this.state.card.cards[4].value
       } 
       if (this.state.hit === 0) {
@@ -134,13 +134,13 @@ class App extends Component {
       }
 
       let cardSix
-      if (this.state.card.cards[5].value ==  "KING" || this.state.card.cards[5].value ==  "QUEEN" || this.state.card.cards[5].value ==  "JACK") {
+      if (this.state.card.cards[5].value ===  "KING" || this.state.card.cards[5].value ===  "QUEEN" || this.state.card.cards[5].value ===  "JACK") {
         cardSix = 10
-      } else if (this.state.card.cards[5].value == "ACE" && this.state.playerCount <= 10) {
+      } else if (this.state.card.cards[5].value === "ACE" && this.state.playerCount <= 10) {
         cardSix = 11
-      } else if (this.state.card.cards[5].value == "ACE" && this.state.playerCount >= 10) {
+      } else if (this.state.card.cards[5].value === "ACE" && this.state.playerCount >= 10) {
         cardSix = 1
-      } else if (this.state.card.cards[5].value !=  "KING" || this.state.card.cards[5].value !=  "QUEEN" || this.state.card.cards[5].value !=  "JACK") {
+      } else if (this.state.card.cards[5].value !==  "KING" || this.state.card.cards[5].value !==  "QUEEN" || this.state.card.cards[5].value !==  "JACK") {
         cardSix = this.state.card.cards[5].value
       } 
       if (this.state.hit === 1) {
@@ -150,13 +150,13 @@ class App extends Component {
       }
 
       let cardSeven
-      if (this.state.card.cards[6].value ==  "KING" || this.state.card.cards[6].value ==  "QUEEN" || this.state.card.cards[6].value ==  "JACK") {
+      if (this.state.card.cards[6].value ===  "KING" || this.state.card.cards[6].value ===  "QUEEN" || this.state.card.cards[6].value ===  "JACK") {
         cardSeven = 10
-      } else if (this.state.card.cards[6].value == "ACE" && this.state.playerCount <= 10) {
+      } else if (this.state.card.cards[6].value === "ACE" && this.state.playerCount <= 10) {
         cardSeven = 11
-      } else if (this.state.card.cards[6].value == "ACE" && this.state.playerCount >= 10) {
+      } else if (this.state.card.cards[6].value === "ACE" && this.state.playerCount >= 10) {
         cardSeven = 1
-      } else if (this.state.card.cards[6].value !=  "KING" || this.state.card.cards[6].value !=  "QUEEN" || this.state.card.cards[6].value !=  "JACK") {
+      } else if (this.state.card.cards[6].value !==  "KING" || this.state.card.cards[6].value !==  "QUEEN" || this.state.card.cards[6].value !==  "JACK") {
         cardSeven = this.state.card.cards[6].value
       } 
       if (this.state.hit === 2) {
@@ -165,13 +165,13 @@ class App extends Component {
         })
       }
       let cardTen
-      if (this.state.card.cards[9].value ==  "KING" || this.state.card.cards[9].value ==  "QUEEN" || this.state.card.cards[9].value ==  "JACK") {
+      if (this.state.card.cards[9].value ===  "KING" || this.state.card.cards[9].value ===  "QUEEN" || this.state.card.cards[9].value ===  "JACK") {
         cardTen = 10
-      } else if (this.state.card.cards[9].value == "ACE" && this.state.playerCount <= 10) {
+      } else if (this.state.card.cards[9].value === "ACE" && this.state.playerCount <= 10) {
         cardTen = 11
-      } else if (this.state.card.cards[9].value == "ACE" && this.state.playerCount >= 10) {
+      } else if (this.state.card.cards[9].value === "ACE" && this.state.playerCount >= 10) {
         cardTen = 1
-      } else if (this.state.card.cards[9].value !=  "KING" || this.state.card.cards[9].value !=  "QUEEN" || this.state.card.cards[9].value !=  "JACK") {
+      } else if (this.state.card.cards[9].value !==  "KING" || this.state.card.cards[9].value !==  "QUEEN" || this.state.card.cards[9].value !==  "JACK") {
         cardTen = this.state.card.cards[9].value
       } 
       if (this.state.hit === 3) {
@@ -188,13 +188,13 @@ class App extends Component {
       })
 
       let cardFour
-      if (this.state.card.cards[3].value ==  "KING" || this.state.card.cards[3].value ==  "QUEEN" || this.state.card.cards[3].value ==  "JACK") {
+      if (this.state.card.cards[3].value ===  "KING" || this.state.card.cards[3].value ===  "QUEEN" || this.state.card.cards[3].value ===  "JACK") {
         cardFour = 10
-      } else if (this.state.card.cards[3].value == "ACE" && this.state.dealerCount <= 10) {
+      } else if (this.state.card.cards[3].value === "ACE" && this.state.dealerCount <= 10) {
         cardFour = 11
-      } else if (this.state.card.cards[3].value == "ACE" && this.state.dealerCount >= 10) {
+      } else if (this.state.card.cards[3].value === "ACE" && this.state.dealerCount >= 10) {
         cardFour = 1
-      } else if (this.state.card.cards[3].value !=  "KING" || this.state.card.cards[3].value !=  "QUEEN" || this.state.card.cards[3].value !=this.state.card.cards[3].value != "ACE") {
+      } else if (this.state.card.cards[3].value !==  "KING" || this.state.card.cards[3].value !==  "QUEEN" || this.state.card.cards[3].value !== "JACK" || this.state.card.cards[3].value !== "ACE") {
         cardFour = this.state.card.cards[3].value
       } 
 
@@ -204,13 +204,13 @@ class App extends Component {
 
       if (this.state.dealerCount + parseInt(cardFour) < 16) {
         let cardEight
-        if (this.state.card.cards[7].value ==  "KING" || this.state.card.cards[7].value ==  "QUEEN" || this.state.card.cards[7].value ==  "JACK") {
+        if (this.state.card.cards[7].value ===  "KING" || this.state.card.cards[7].value ===  "QUEEN" || this.state.card.cards[7].value ===  "JACK") {
           cardEight = 10
-        } else if (this.state.card.cards[7].value == "ACE" && this.state.dealerCount + cardFour <= 10) {
+        } else if (this.state.card.cards[7].value === "ACE" && this.state.dealerCount + cardFour <= 10) {
           cardEight = 11
-        } else if (this.state.card.cards[7].value == "ACE" && this.state.dealerCount + cardFour >= 10) {
+        } else if (this.state.card.cards[7].value === "ACE" && this.state.dealerCount + cardFour >= 10) {
           cardEight = 1
-        } else if (this.state.card.cards[7].value !=  "KING" || this.state.card.cards[7].value !=  "QUEEN" || this.state.card.cards[7].value !=this.state.card.cards[7].value != "ACE") {
+        } else if (this.state.card.cards[7].value !==  "KING" || this.state.card.cards[7].value !==  "QUEEN" || this.state.card.cards[7].value !== "JACK" || this.state.card.cards[7].value !== "ACE") {
           cardEight = this.state.card.cards[7].value
         } 
         setTimeout(() => {
@@ -223,13 +223,13 @@ class App extends Component {
 
       if (this.state.dealerCount + parseInt(cardFour) + parseInt(this.state.card.cards[7].value) < 16) {
         let cardNine
-        if (this.state.card.cards[8].value ==  "KING" || this.state.card.cards[8].value ==  "QUEEN" || this.state.card.cards[8].value ==  "JACK") {
+        if (this.state.card.cards[8].value ===  "KING" || this.state.card.cards[8].value ===  "QUEEN" || this.state.card.cards[8].value ===  "JACK") {
           cardNine = 10
-        } else if (this.state.card.cards[8].value == "ACE" && this.state.dealerCount <= 10) {
+        } else if (this.state.card.cards[8].value === "ACE" && this.state.dealerCount <= 10) {
           cardNine = 11
-        } else if (this.state.card.cards[8].value == "ACE" && this.state.dealerCount >= 10) {
+        } else if (this.state.card.cards[8].value === "ACE" && this.state.dealerCount >= 10) {
           cardNine = 1
-        } else if (this.state.card.cards[8].value !=  "KING" || this.state.card.cards[8].value !=  "QUEEN" || this.state.card.cards[8].value !=this.state.card.cards[8].value != "ACE") {
+        } else if (this.state.card.cards[8].value !==  "KING" || this.state.card.cards[8].value !==  "QUEEN" || this.state.card.cards[8].value !== "JACK" || this.state.card.cards[8].value !== "ACE") {
           cardNine = this.state.card.cards[8].value
         } 
         setTimeout(() => {
@@ -253,11 +253,6 @@ class App extends Component {
         window.location.reload(); 
       }, 500)
     }
-
-    // const dealerWins = confirm('Dealer wins'); 
-    // if (dealerWins == true) {
-    //   window.location.reload(); 
-    // }
 
     return (
 
