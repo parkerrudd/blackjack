@@ -242,6 +242,7 @@ class App extends Component {
         }, 2000)
       }     
     }
+    
     if (this.state.stay && this.state.dealerCount >= 16 && this.state.dealerCount === this.state.playerCount) {
       setTimeout(() => {
         alert('Tie')
